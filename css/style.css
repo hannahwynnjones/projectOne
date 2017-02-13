@@ -1,8 +1,6 @@
 header {
   width:100%;
   text-align:center;
-
-
 }
 
 body {
@@ -10,20 +8,13 @@ body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-.middleBoard {
+.set {
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
   position: absolute;
   text-align: center;
-  background-color: white;
-  border-color: black;
-  border-width: medium;
-  padding: 30px;
   margin: 0 auto;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 4px;
-  height: 450px;
-  width: 600px;
 }
 
 .topBoard {
@@ -31,6 +22,7 @@ body {
   text-align: center;
   background-color: white;
   border-color: black;
+  boder: white;
   padding: 30px;
   margin: 0 auto;
   top: 50%;
@@ -40,24 +32,41 @@ body {
   width: 600px;
 }
 
+.middleBoard {
+  position: absolute;
+  text-align: center;
+  background-color: white;
+  border-color: black;
+  border-top: white;
+  border-width: medium;
+  padding: 30px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  height: 450px;
+  width: 600px;
+}
+
 .question {
-  font-size: 30px;
+  font-size: 20px;
   padding: 20px 0;
 }
 
 .answers {
-    font-size: 30px;
+    font-size: 20px;
     padding: 20px 0;
 }
 
 
 .daveDiv {
-    font-size: 30px;
+    font-size: 20px;
     padding: 20px 0;
   }
 
 button {
-  font-size: 30px;
+  font-size: 20px;
   margin: 5px;
   padding: 25px 7;
 }
@@ -65,4 +74,20 @@ button {
 .screen {
   font-size: 25px;
   padding: 20px 0;
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+p span {
+  font-weight: bold;
+}
+
+p.result  {
+  background-color: rgb(51, 51, 77);
+  color: white;
+  padding: 8px 12px;
+  height: 34px;
+  border-radius: 4px;
 }
