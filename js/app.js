@@ -19,9 +19,16 @@ $(() => {
   const $score1 = $('#score1');
   const $score2 = $('#score2');
   const $hidden = $('.hidden');
-  const $set = $('.set');
+  const $tvSet = $('.tvSet');
+  const chairToMove = $('.'+currentPlayer);
   let timerId;
   let totalTime;
+
+//TVSET
+
+  const $playerOne = $('#playerOne');  ///divs for playerOneone
+  const $playerTwo = $('#playerTwo');
+
 
   var listOfQuestions = [
     {
@@ -139,52 +146,16 @@ $(() => {
     // $timer.removeClass('active');
   }
 
-  function gameOver() {
-    $daveDiv.html('Stop!');
-    $startButton.html('Play again?');
-    toggleBoard();                                //need?
-  } // stop timer after 10 seconds
+  // function gameOver() {
+  //   $daveDiv.html('Stop!');
+  //   $startButton.html('Play again?');
+  //   toggleBoard();                                //need?
+  // } // stop timer after 10 seconds
 
   function toggleBoard() {
     $hidden.toggle();
     $startButton.toggle();
   }
-//*********emily's
-
-// function startTimer() {
-//     resetGame();
-//     toggleBoard();
-//     generateSum();
-//     $timer.addClass('active');
-
-  //   const timerId = setInterval(() => {
-  //     time--;
-  //     $timer.html(time);
-  //   }, 1000);
-  //
-  //   setTimeout(() => {
-  //     clearInterval(timerId);
-  //     $display.html('Stop!');
-  //     $button.html('Play again?');
-  //     toggleBoard();
-  //   }, 10000); // stop timer after 10 seconds
-  // }
-  //
-  // function resetGame() {
-  //   userScore = 0;
-  //   time = 10;
-  //   $score.html(userScore);
-  //   $timer.html(time);
-  //   $feedback.html('');
-  //   $timer.removeClass('active');
-  // }
-  //
-  // function toggleBoard() {
-  //   $hidden.toggle();
-  //   $button.toggle();
-  // }
-
-//*********emily's
 
 // (2) generate Question  (generating a qu from the array by popping it out
 // displays question on page
@@ -216,17 +187,29 @@ $(() => {
         scoreTwo++;
       }
 
-      $set.fadeIn();
+      $tvSet.fadeIn();
+      // write any logic that you want to do when you move the chairs
+      console.log(currentPlayer);
+      const $chairToMove = $('#'+currentPlayer);
+      if (currentPlayer === 'playerOne') {
+        $chairToMove.animate({left: '-=50', bottom: '+=50'}, 2000);
+        $chairToMove.css('background', 'red');
+      } else if (currentPlayer === 'playerTwo') {
+        $chairToMove.animate({right: '-=50', bottom: '+=50'}, 2000);
+        $chairToMove.css('background', 'yellow');
+      }
       setTimeout(()=> {
-        // write any logic that you want to do when you move the chairs
-        const chairToMove = $('.'+currentPlayer);
+
+        $tvSet.fadeOut('slow');
         console.log(chairToMove);
-        $set.fadeOut();
+        // $tvSet.fadeOut();  //.delay(5000).fadeTo('slow', 0.6);
         resetTimer();
         togglePlayer(); //change players
-      }, 2000);
+      }, 3000);
       // Dave - Thats correct!  noise
       //chair moves one space up
+
+      // $tvSet.fadeOut();
 
     } else { //(correctAnswer !== userAnswer)
       console.log('Incorrect');
@@ -297,6 +280,9 @@ $(() => {
     console.log(scoreOne);
     console.log(scoreTwo);
     console.log(questionCounter);
+    resetTimer();
+    // startGame();
+    $daveDiv.text('New game, quick!!!');
   });
 
 });

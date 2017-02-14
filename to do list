@@ -1,0 +1,33 @@
+
+List of stuff to do
+
+Monday
+// - timer goes down
+// - timer to stop at zero
+
+Tuesday
+- draw
+  - tvSet
+  - playerDivs (the characters on the page)
+  - Dave maybe?
+- create moving object for the players
+// reset game
+
+Wednesday
+- what happens when the time gets to zero - restart button needs to appear?  is it a game over?
+- What happens when there is a draw?
+- game over animation - moving gunge div?
+- fade in logo at the beginning with instructions.
+
+
+Thursday
+- re-factoring
+- tinkering
+- voices
+- de-bugging
+
+
+Extra levels?
+- give yourself a name maybe
+- think about the draw feature - closest question?
+- moving dave animation
