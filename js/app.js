@@ -20,13 +20,16 @@ $(() => {
   // const $start = $('.start');
   const $timer = $('.timer');
   const $startButton = $('.start');
-  const $hidden = $('.hidden');
+  //const $button = $('.start');
+  // const $reset = $('.reset');
 
   // const $result =$('.result');
   // const $playerOne = $('.playerOne');
   // const $playerTwo = $('.playerTwo');
   const $score1 = $('#score1');
   const $score2 = $('#score2');
+  // const $start = $('.start');
+  const $hidden = $('.hidden');
 
   var listOfQuestions = [
     {
@@ -101,7 +104,7 @@ $(() => {
     },
     {
       question: 'The Princess in the Super Mario franchise hasn\'t always been named Peach (in North America, at least). What was she previously known as?',
-      choices: ['Princess Toadstool', '7', ''],
+      choices: ['orange', '7', 'fish'],
       correctAnswer: 'orange'
     },
     {
@@ -112,33 +115,27 @@ $(() => {
   ];
 
 //functions:
-
 // (1)$button.on('click', startTimer); // To create start timer function
-//******NEED TO DO TIMER ******
-
-// function for timer starting, and stops when it hits zero.  When timer hits zero, and no button has been hit, player looses point (treat like a wrong answer).
 
   $startButton.on('click', startTimer);
   $startButton.on('click', generateQuestion);
 
-//
   function startTimer() {
     console.log(startTimer);
     $timer.addClass('active');
-    const timerId = setInterval(() => {
+    const $timer = setInterval(() => {
       time--;
       $timer.html(time);
     }, 1000);
-  };
+  }
+
   setTimeout(() => {
-    clearInterval(timerId);
-    $display.html('Stop!');
-    $button.html('Play again?');
+    clearInterval($timer);
+    $timer.removeClass('active');
+    $startButton.html('Play again?');
     toggleBoard();
   }, 10000); // stop timer after 10 seconds
 
-
-//
 
 // function resetGame() {
 //   time = 10;
@@ -148,24 +145,25 @@ $(() => {
 //   $timer.removeClass('active');
 // }
 
-function toggleBoard() {
-  $hidden.toggle();
-  $button.toggle();
-}
+//may not need this toggleboard?
+
+  function toggleBoard() {
+    $hidden.toggle();
+    $startButton.toggle();
+  }
 //
-// $('button.reset').on('click', ()=>{
-//     //location.reload();
-//     $player1.text('');
-//     $player2.text('');
-//     $result.text('');
-//     $score1.text(`${scoreOne}`);
-//     $score2.text(`${scoreTwo}`);
-//       time = 10;
-//     }
+  // $('button.reset').on('click', ()=>{
+  //   //location.reload();
+  //   $player1.text('');
+  //   $player2.text('');
+  //   $result.text('');
+  //   $score1.text(`${scoreOne}`);
+  //   $score2.text(`${scoreTwo}`);
+  //     time = 10;
+  //   })
 
-// (2) generate Question  (generating a qu from thearray by popping it out
+// (2) generate Question  (generating a qu from the array by popping it out
 // displays question on page
-
 
   function generateQuestion() {
     // Pop last question from array
@@ -181,27 +179,20 @@ function toggleBoard() {
   const $answers = $('.answers');
   $answers.on('click', 'button', checkForMatch);
 
-
 //(3) Check for a match
   function checkForMatch(e) {
     const correctAnswer = popped.correctAnswer;
     const userAnswer = $(e.target).text();
 
     if ((correctAnswer === userAnswer) && (currentPlayer === 'playerOne')) {
-      console.log('Correctp1');
       $daveDiv.text('Correct');
       scoreOne++;
-      console.log('scoreOne');
-      console.log(scoreOne);
       // Dave - Thats correct!  noise
       //chair moves one space up
 
     } else if ((correctAnswer === userAnswer) && (currentPlayer === 'playerTwo')) {
-      console.log('Correctp2');
       $daveDiv.text('Correct');
       scoreTwo++;
-      console.log('scoreTwo');
-      console.log(scoreTwo);
       // Dave - Thats correct!  noise
       //chair moves one space up
     } else {             //(correctAnswer !== userAnswer)
@@ -211,6 +202,7 @@ function toggleBoard() {
     }
     generateQuestion();   //always generate a question at the end of each go
     questionCounter++;
+    startTimer();
     console.log('scoreOne');
     console.log(scoreOne);
     console.log('scoreTwo');
@@ -225,8 +217,8 @@ function toggleBoard() {
     $score2.text(`${scoreTwo}`);
   }
 
-  playerOneWin();          //check for player one win
-  playerTwoWin();          //check for player one win
+  // playerOneWin();          //check for player one win
+  // playerTwoWin();          //check for player one win
   // generateQuestion();      //always generate a question at the end of each go
 
 //showng the scoreboard at the bottom of the page to keep tabs on the score without having to use the console.
@@ -272,4 +264,5 @@ function toggleBoard() {
     console.log(questionCounter);
     time = 10;
   });
+
 });
