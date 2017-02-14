@@ -4,7 +4,6 @@ $(() => {
 
   let scoreOne = 0;
   let scoreTwo = 0;
-  // let time = 10;
   let questionCounter = 0; //Tracks question number to decide whose go it is
   let popped;
   // let playerOne;
@@ -12,24 +11,17 @@ $(() => {
   let currentPlayer = 'playerOne';
   let time = 10;
 
-  // const $timer = $('.timer');
-
   const $reset = $('.reset');
   const $questionDiv = $('.question');
   const $daveDiv = $('.daveDiv');
-  // const $start = $('.start');
   const $timer = $('.timer');
   const $startButton = $('.start');
-  //const $button = $('.start');
-  // const $reset = $('.reset');
-
-  // const $result =$('.result');
-  // const $playerOne = $('.playerOne');
-  // const $playerTwo = $('.playerTwo');
   const $score1 = $('#score1');
   const $score2 = $('#score2');
-  // const $start = $('.start');
   const $hidden = $('.hidden');
+  const $set = $('.set');
+  let timerId;
+  let totalTime;
 
   var listOfQuestions = [
     {
@@ -95,17 +87,17 @@ $(() => {
     {
       question: 'Which Pokemon was not in the original Pokedex?',
       choices: ['cat', 'red', 'blue'],
-      correctAnswer: 'red'
+      correctAnswer: 'cat'
     },
     {
       question: 'What was the name of Angelica Pickles\' doll?',
       choices: ['purple', 'Cynthia', 'Verity'],
-      correctAnswer: 'purple'
+      correctAnswer: 'Cynthia'
     },
     {
       question: 'The Princess in the Super Mario franchise hasn\'t always been named Peach (in North America, at least). What was she previously known as?',
-      choices: ['orange', '7', 'fish'],
-      correctAnswer: 'orange'
+      choices: ['Princess Toadstoll', '7', 'fish'],
+      correctAnswer: 'Princess Toadstoll'
     },
     {
       question: 'Who is the queen?',
@@ -114,53 +106,85 @@ $(() => {
     }
   ];
 
+  // $startButton.on('click', generateQuestion);
+  $startButton.on('click', startGame);
+
+  function startGame() {
+    toggleBoard();
+    startTimer();
+  }
 //functions:
 // (1)$button.on('click', startTimer); // To create start timer function
 
-  $startButton.on('click', startTimer);
-  $startButton.on('click', generateQuestion);
-
   function startTimer() {
-    console.log(startTimer);
-    $timer.addClass('active');
-    const $timer = setInterval(() => {
+    generateQuestion();
+    // $timer.addClass('active');
+
+    timerId = setInterval(() => {
       time--;
       $timer.html(time);
     }, 1000);
+
+    totalTime = setTimeout(()=> {
+      clearInterval(timerId);
+    }, 10000);
   }
 
-  setTimeout(() => {
-    clearInterval($timer);
-    $timer.removeClass('active');
+  function resetTimer() {
+    clearInterval(timerId);
+    clearTimeout(totalTime);
+    time = 10;
+    $timer.html(time);
+    startTimer();
+    // $timer.removeClass('active');
+  }
+
+  function gameOver() {
+    $daveDiv.html('Stop!');
     $startButton.html('Play again?');
-    toggleBoard();
-  }, 10000); // stop timer after 10 seconds
-
-
-// function resetGame() {
-//   time = 10;
-//   $score.html(userScore);
-//   $timer.html(time);
-//   $feedback.html('');
-//   $timer.removeClass('active');
-// }
-
-//may not need this toggleboard?
+    toggleBoard();                                //need?
+  } // stop timer after 10 seconds
 
   function toggleBoard() {
     $hidden.toggle();
     $startButton.toggle();
   }
-//
-  // $('button.reset').on('click', ()=>{
-  //   //location.reload();
-  //   $player1.text('');
-  //   $player2.text('');
-  //   $result.text('');
-  //   $score1.text(`${scoreOne}`);
-  //   $score2.text(`${scoreTwo}`);
-  //     time = 10;
-  //   })
+//*********emily's
+
+// function startTimer() {
+//     resetGame();
+//     toggleBoard();
+//     generateSum();
+//     $timer.addClass('active');
+
+  //   const timerId = setInterval(() => {
+  //     time--;
+  //     $timer.html(time);
+  //   }, 1000);
+  //
+  //   setTimeout(() => {
+  //     clearInterval(timerId);
+  //     $display.html('Stop!');
+  //     $button.html('Play again?');
+  //     toggleBoard();
+  //   }, 10000); // stop timer after 10 seconds
+  // }
+  //
+  // function resetGame() {
+  //   userScore = 0;
+  //   time = 10;
+  //   $score.html(userScore);
+  //   $timer.html(time);
+  //   $feedback.html('');
+  //   $timer.removeClass('active');
+  // }
+  //
+  // function toggleBoard() {
+  //   $hidden.toggle();
+  //   $button.toggle();
+  // }
+
+//*********emily's
 
 // (2) generate Question  (generating a qu from the array by popping it out
 // displays question on page
@@ -184,32 +208,43 @@ $(() => {
     const correctAnswer = popped.correctAnswer;
     const userAnswer = $(e.target).text();
 
-    if ((correctAnswer === userAnswer) && (currentPlayer === 'playerOne')) {
+    if (correctAnswer === userAnswer) {
       $daveDiv.text('Correct');
-      scoreOne++;
+      if (currentPlayer === 'playerOne') {
+        scoreOne++;
+      } else {
+        scoreTwo++;
+      }
+
+      $set.fadeIn();
+      setTimeout(()=> {
+        // write any logic that you want to do when you move the chairs
+        const chairToMove = $('.'+currentPlayer);
+        console.log(chairToMove);
+        $set.fadeOut();
+        resetTimer();
+        togglePlayer(); //change players
+      }, 2000);
       // Dave - Thats correct!  noise
       //chair moves one space up
 
-    } else if ((correctAnswer === userAnswer) && (currentPlayer === 'playerTwo')) {
-      $daveDiv.text('Correct');
-      scoreTwo++;
-      // Dave - Thats correct!  noise
-      //chair moves one space up
-    } else {             //(correctAnswer !== userAnswer)
+    } else { //(correctAnswer !== userAnswer)
       console.log('Incorrect');
       $daveDiv.text('Incorrect');
+      resetTimer();
+      togglePlayer(); //change players
       // Dave - Thats Incorrect!  noise
+      //chair moves one space up
     }
-    generateQuestion();   //always generate a question at the end of each go
+    // generateQuestion();
+    //always generate a question at the end of each go
     questionCounter++;
-    startTimer();
     console.log('scoreOne');
     console.log(scoreOne);
     console.log('scoreTwo');
     console.log(scoreTwo);
     console.log('questionCounter');
     console.log(questionCounter);
-    togglePlayer();                 //change players
     console.log(currentPlayer);
     playerOneWin();          //check for player one win
     playerTwoWin();
@@ -262,7 +297,6 @@ $(() => {
     console.log(scoreOne);
     console.log(scoreTwo);
     console.log(questionCounter);
-    time = 10;
   });
 
 });

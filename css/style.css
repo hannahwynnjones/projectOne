@@ -10,30 +10,37 @@ body {
 
 .set {
   background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
   position: absolute;
   text-align: center;
   margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: #333;
 }
 
-.topBoard {
+main {
   position: absolute;
-  text-align: center;
-  background-color: white;
-  border-color: black;
-  boder: white;
-  padding: 30px;
-  margin: 0 auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.topBoard {
+  text-align: center;
+  background-color: white;
+  border-color: black;
+  padding: 30px;
+  margin: 0 auto;
+
   height: 150px;
   width: 600px;
 }
 
 .middleBoard {
-  position: absolute;
   text-align: center;
   background-color: white;
   border-color: black;
@@ -41,9 +48,6 @@ body {
   border-width: medium;
   padding: 30px;
   margin: 0 auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 4px;
   height: 450px;
   width: 600px;
