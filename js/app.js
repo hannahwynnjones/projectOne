@@ -20,7 +20,7 @@ $(() => {
   const $score2 = $('#score2');
   const $hidden = $('.hidden');
   const $tvSet = $('.tvSet');
-  const chairToMove = $('.'+currentPlayer);
+  const $chairToMove = $('#'+currentPlayer);
   let timerId;
   let totalTime;
 
@@ -201,7 +201,7 @@ $(() => {
       setTimeout(()=> {
 
         $tvSet.fadeOut('slow');
-        console.log(chairToMove);
+        console.log($chairToMove);
         // $tvSet.fadeOut();  //.delay(5000).fadeTo('slow', 0.6);
         resetTimer();
         togglePlayer(); //change players
@@ -253,6 +253,22 @@ $(() => {
     if (scoreOne === 5) {
       $daveDiv.text('Player One has won!');
       console.log('p1 wins');
+      const $chairToMove = $('#'+currentPlayer);
+      if (currentPlayer === 'playerOne') {
+        $chairToMove.animate({left: '-=250', bottom: '-=250'}, 1500);
+        $chairToMove.css('background', 'green');
+      } else if (currentPlayer === 'playerTwo') {
+        $chairToMove.animate({left: '-=250', top: '+=250'}, 1500);
+        $chairToMove.css('background', 'blue');
+      }
+      setTimeout(()=> {
+
+        $tvSet.fadeOut('slow');
+        console.log($chairToMove);
+        // $tvSet.fadeOut();  //.delay(5000).fadeTo('slow', 0.6);
+        resetTimer();
+        togglePlayer(); //change players
+      }, 3000);
       //play dunk music
     }
   }
@@ -260,7 +276,25 @@ $(() => {
     if (scoreTwo === 5) {
       $daveDiv.text('Player Two has won!');
       console.log('p2 wins');
-      //play dunk music
+      $tvSet.fadeIn();
+      // write any logic that you want to do when you move the chairs
+      console.log(currentPlayer);
+      const $chairToMove = $('#'+currentPlayer);
+      if (currentPlayer === 'playerOne') {
+        $chairToMove.animate({left: '-=250', bottom: '-=250'}, 1500);
+        $chairToMove.css('background', 'green');
+      } else if (currentPlayer === 'playerTwo') {
+        $chairToMove.animate({left: '-=250', top: '+=250'}, 1500);
+        $chairToMove.css('background', 'blue');
+      }
+      setTimeout(()=> {
+
+        $tvSet.fadeOut('slow');
+        console.log($chairToMove);
+        // $tvSet.fadeOut();  //.delay(5000).fadeTo('slow', 0.6);
+        resetTimer();
+        togglePlayer(); //change players
+      }, 3000);
     }
   }
 
