@@ -127,6 +127,19 @@ p.result  {
   margin-top: 450px;
 }
 
+.gunge {
+    background: #00f002;
+    width: 500px;
+    height: 100px;
+    position: relative;
+    left: 50%;
+    /*top: 50%;*/
+    transform: translate(-50%, -50%);*/
+    text-align: center;
+    margin-top: 670px;
+    border-color: black;
+}
+
 /*#playerOneMoveButton {
 padding: 20px;
 margin: 0 auto;

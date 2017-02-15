@@ -22,6 +22,7 @@ $(() => {
   const $tvSet = $('.tvSet');
   const $chairToMove = $('#'+currentPlayer);
   const $audio = $('audio.startButton');
+  const $gunge = $('.gunge');
   let timerId;
   let totalTime;
 
@@ -282,22 +283,24 @@ $(() => {
 //(6) reset game at end
 
   $reset.on('click', ()=>{
-//   //location.reload();
-    // $playerOne.text(0);
-    // $playerTwo.text(0);
-    //   $result.text('');
-    $score1.text(0);
-    $score2.text(0);
-    console.log(currentPlayer);
-    console.log(scoreOne);
-    console.log(scoreTwo);
-    console.log(questionCounter);
-    resetTimer();
-    // startGame();
-    $daveDiv.text('New game, quick!!!');
+        location.reload();
+// //   //location.reload();
+//     // $playerOne.text(0);
+//     // $playerTwo.text(0);
+//     //   $result.text('');
+//     $score1.text(0);
+//     $score2.text(0);
+//     console.log(currentPlayer);
+//     console.log(scoreOne);
+//     console.log(scoreTwo);
+//     console.log(questionCounter);
+//     resetTimer();
+//     // startGame();
+//     $daveDiv.text('New game, quick!!!');
   });
 
   function resetGame() {
+    location.reload();
     scoreOne = 0;
     scoreTwo = 0;
     time = 10;
@@ -318,13 +321,17 @@ $(() => {
     if (currentPlayer === 'playerOne') {
       // $chairToMove moves up first
       $chairToMove.animate({left: '-=50', bottom: '+=50'}, 500);
-      $chairToMove.animate({left: '+=250', top: '+=250'}, 1000);
+      $chairToMove.animate({left: '+=350', top: '+=350'}, 1000);
       $chairToMove.css('background', 'green');
+      $gunge.animate({left: '+=10'}, 1500);
+      $gunge.animate({bottom: '+=40'}, 1000);
     } else if (currentPlayer === 'playerTwo') {
       $chairToMove.animate({right: '-=50', bottom: '+=50'}, 500);
       ///SOUND GET YOUR OWN BACK - wait for clip to finsih
-      $chairToMove.animate({left: '-=250', top: '+=250'}, 1000);
+      $chairToMove.animate({left: '-=350', top: '+=350'}, 1000);
       $chairToMove.css('background', 'blue');
+      $gunge.animate({left: '+=10'}, 1500);
+      $gunge.animate({bottom: '+=40'}, 1000);
     }
     setTimeout(()=> {
 
