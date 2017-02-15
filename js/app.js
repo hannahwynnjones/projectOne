@@ -116,18 +116,18 @@ $(() => {
 
   // $startButton.on('click', generateQuestion);
   $startButton.on('click', startGame);
-  $startButton.on('click', (e) => {    //play a GYOB intro - welcome to...
-    $startButton.textContent = 'PLAY';
-    if($audio.paused) {
-      $audio.play();
-      e.target.textContent = 'PAUSE';
-    } else {
-      $audio.pause();
-      e.target.textContent = 'PLAY';
-    }
-  });
+  // $startButton.on('click', (e) => {    //play a GYOB intro - welcome to...
+  //   $startButton.textContent = 'PLAY';
+  //   if($audio.paused) {
+  //     $audio.play();
+  //     e.target.textContent = 'PAUSE';
+  //   } else {
+  //     $audio.pause();
+  //     e.target.textContent = 'PLAY';
+  //   }
+  // });
 
-
+//startGame = used at the beggining to start the game.
   function startGame() {
     $score1.text(0);
     $score2.text(0);
@@ -142,6 +142,7 @@ $(() => {
 // (1)$button.on('click', startTimer); // To create start timer function
 
   function startTimer() {
+    time = 10;
     generateQuestion();
     timerId = setInterval(() => {
       time--;
@@ -166,6 +167,8 @@ $(() => {
     clearTimeout(totalTime);
     time = 10;
     $timer.html(time);
+    $questionDiv.text('  ');
+    $answers.text(' ');
   }
 
   function toggleBoard() {
@@ -203,25 +206,31 @@ $(() => {
         scoreTwo++;
       }
 
-      $tvSet.fadeIn();
-      console.log(currentPlayer);
-      const $chairToMove = $('#'+currentPlayer);
-      if (currentPlayer === 'playerOne') {
-        $chairToMove.animate({left: '-=50', bottom: '+=50'}, 500);
-        $chairToMove.css('background', 'red');
-      } else if (currentPlayer === 'playerTwo') {
-        $chairToMove.animate({right: '-=50', bottom: '+=50'}, 500);
-        $chairToMove.css('background', 'yellow');
-      }
-      setTimeout(()=> {
+      if ((scoreOne !== 5) && (scoreTwo !== 5)) {
+        $tvSet.fadeIn();
+        console.log(currentPlayer);
+        const $chairToMove = $('#'+currentPlayer);
+        if (currentPlayer === 'playerOne') {
+          $chairToMove.animate({left: '-=50', bottom: '+=50'}, 500);
+          $chairToMove.css('background', 'red');
+        } else if (currentPlayer === 'playerTwo') {
+          $chairToMove.animate({right: '-=50', bottom: '+=50'}, 500);
+          $chairToMove.css('background', 'yellow');
+        }
+        setTimeout(()=> {
 
-        $tvSet.fadeOut('slow');
-        console.log($chairToMove);
-        resetTimer();  //resets the timer after each time the player climbs the crank
-        togglePlayer(); //change players
-      }, 1000);
-      // Dave - Thats correct!  noise
-      //chair moves one space up
+          $tvSet.fadeOut('slow');
+          console.log($chairToMove);
+          resetTimer();  //resets the timer after each time the player climbs the crank
+          togglePlayer(); //change players
+        }, 1000);
+        // Dave - Thats correct!  noise
+        //chair moves one space up
+      } else { // if final point
+        playerOneWin();          //check for player one win
+        playerTwoWin();
+        gameOver();
+      }
 
     } else {
       console.log('Incorrect');
@@ -240,8 +249,6 @@ $(() => {
     console.log('questionCounter');
     console.log(questionCounter);
     console.log(currentPlayer);
-    playerOneWin();          //check for player one win
-    playerTwoWin();
     $score1.text(`${scoreOne}`);
     $score2.text(`${scoreTwo}`);
   }
@@ -257,19 +264,17 @@ $(() => {
 
 // (5) function to determine whether player one has won yet:
   function playerOneWin() {
-    if (scoreOne === 5) {
-      $daveDiv.text('Player One has won!');
-      console.log('p1 wins');
-      dunkPlayer();
-      //play dunk music
-    }
+    $daveDiv.text('Player One has won!');
+    console.log('p1 wins');
+    dunkPlayer();
+    gameFinish();
+    //play dunk music
   }
   function playerTwoWin() {
-    if (scoreTwo === 5) {
-      $daveDiv.text('Player Two has won!');
-      console.log('p2 wins');
-      dunkPlayer();
-    }
+    $daveDiv.text('Player Two has won!');
+    console.log('p2 wins');
+    dunkPlayer();
+    gameFinish();
   }
 
 //finsih game?
@@ -293,12 +298,27 @@ $(() => {
     $daveDiv.text('New game, quick!!!');
   });
 
+  function resetGame() {
+    let scoreOne = 0;
+    let scoreTwo = 0;
+    console.log(currentPlayer);
+    console.log(scoreOne);
+    console.log(scoreTwo);
+    console.log(questionCounter);
+    // resetTimer();
+    // startGame();
+    $daveDiv.text('New game, quick!!!');
+  }
+
+
+
   function dunkPlayer(){
     $tvSet.fadeIn();
     // write any logic that you want to do when you move the chairs
     console.log(currentPlayer);
     const $chairToMove = $('#'+currentPlayer);
     if (currentPlayer === 'playerOne') {
+      // $chairToMove moves up first
       $chairToMove.animate({left: '+=250', top: '+=250'}, 1000);
       $chairToMove.css('background', 'green');
     } else if (currentPlayer === 'playerTwo') {
@@ -310,24 +330,41 @@ $(() => {
       $tvSet.fadeOut('slow');
       console.log($chairToMove);
       // $tvSet.fadeOut();  //.delay(5000).fadeTo('slow', 0.6);
-      resetTimer();
+      // resetTimer();
       togglePlayer(); //change players
     }, 3000);
-    gameOver();
+    gameFinish();
+  }
+
+  function gameFinish() {
+    if ((scoreOne === 5) || (scoreTwo === 5)) {
+      stopTimer();
+      resetGame();
+      $daveDiv.html('GET YOUR OWN BACK!');
+      toggleBoard();
+      $startButton.html('Play again?');
+    // $startButton.on('click', startGame);
+      // $score1.text(0);
+      // $score2.text(0);
+      // console.log(currentPlayer);
+      // console.log(scoreOne);
+      // console.log(scoreTwo);
+      // console.log(questionCounter);
+    }
   }
 
   function gameOver() {
-    stopTimer();
-    $daveDiv.html('GET YOUR OWN BACK!');
+    if (time === 0)
+      $daveDiv.html('GAMEOVER!');
+    // toggleBoard();
     $startButton.html('Play again?');
-    $startButton.on('click', startGame);
-    // $score1.text(0);
-    // $score2.text(0);
-    // console.log(currentPlayer);
-    // console.log(scoreOne);
-    // console.log(scoreTwo);
-    // console.log(questionCounter);
+    // $startButton.on('click', startGame);
+      // $score1.text(0);
+      // $score2.text(0);
+      // console.log(currentPlayer);
+      // console.log(scoreOne);
+      // console.log(scoreTwo);
+      // console.log(questionCounter);
   }
-
 
 });

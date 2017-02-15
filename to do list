@@ -16,7 +16,7 @@ Tuesday
  - gunging?
       - could have moving div coming up to cover playerDiv so that the gunge appears ti swallow the player
       - or could have gunge splashing back at pc screen.
-- sounds
+- sounds (already in html and jquery)
     - intro music
     - crank them up (on scoring a point)
     - GET YOUR OWN BACK
