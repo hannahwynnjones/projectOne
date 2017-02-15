@@ -6,21 +6,11 @@ Monday
 // - timer to stop at zero
 
 Tuesday
-- draw
-    - tvSet
-    - logo (to swipe in and also top of page)
-    - playerDivs (the characters on the page)
-    - Dave maybe?
 // create moving object for the players
 // reset game
  - gunging?
       - could have moving div coming up to cover playerDiv so that the gunge appears ti swallow the player
       - or could have gunge splashing back at pc screen.
-- sounds (already in html and jquery)
-    - intro music
-    - crank them up (on scoring a point)
-    - GET YOUR OWN BACK
-    - 'that's all folks'
 
 - tidy up CSS
 - sort out end of game
@@ -28,19 +18,37 @@ Tuesday
 Wednesday
 
 AM
--sort out stop
+// - sort out stop
+- animation on finish
+- reset function: re-set divs and re-set counter.
+- end game function to end the game if the counter gets to zero
+    - let player know who won despite game over.
 
 
-- what happens when the time gets to zero - restart button needs to appear?  is it a game over?
-- What happens when there is a draw?
-- game over animation - moving gunge div?
+PM
+- dunking animation
+- game over animation
+
 - fade in logo at the beginning with instructions.
 
+Home-time
+- sort out CSS
+- draw
+    - tvSet
+    - logo (to swipe in and also top of page)
+    - playerDivs (the characters on the page)
+    - Dave maybe?
+
+  - download and cut clips
+      - intro music
+      - crank them up (on scoring a point)
+      - GET YOUR OWN BACK
+      - 'that's all folks'
 
 Thursday
 - re-factoring
 - tinkering
-- voices
+- voices/add sounds
 - de-bugging
 - mute button
 
@@ -49,4 +57,4 @@ Extra levels?
 - give yourself a name maybe
 - think about the draw feature - closest question?
 - moving dave animation
-think about animating the swiping in logo - flashing between 2 logos
+- think about animating the swiping in logo - flashing between 2 logos

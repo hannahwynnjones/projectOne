@@ -227,8 +227,7 @@ $(() => {
         // Dave - Thats correct!  noise
         //chair moves one space up
       } else { // if final point
-        playerOneWin();          //check for player one win
-        playerTwoWin();
+        playerWin();          //check for player one win
         gameOver();
       }
 
@@ -263,19 +262,19 @@ $(() => {
   }
 
 // (5) function to determine whether player one has won yet:
-  function playerOneWin() {
-    $daveDiv.text('Player One has won!');
-    console.log('p1 wins');
+  function playerWin() {
+    $daveDiv.text('You\ve Won!');
+    console.log('player wins');
     dunkPlayer();
     gameFinish();
     //play dunk music
   }
-  function playerTwoWin() {
-    $daveDiv.text('Player Two has won!');
-    console.log('p2 wins');
-    dunkPlayer();
-    gameFinish();
-  }
+  // function playerTwoWin() {
+  //   $daveDiv.text('Player Two has won!');
+  //   console.log('p2 wins');
+  //   dunkPlayer();
+  //   gameFinish();
+  // }
 
 //finsih game?
 //big dave speaks and finsihes the game, player then given the option of re-starting
@@ -299,15 +298,14 @@ $(() => {
   });
 
   function resetGame() {
-    let scoreOne = 0;
-    let scoreTwo = 0;
-    console.log(currentPlayer);
-    console.log(scoreOne);
-    console.log(scoreTwo);
-    console.log(questionCounter);
+    scoreOne = 0;
+    scoreTwo = 0;
+    time = 10;
     // resetTimer();
     // startGame();
-    $daveDiv.text('New game, quick!!!');
+  //   $daveDiv.text('New game, quick!!!');
+  //   $playerOne.css({top: 450, left: 400, position: 'absolute'});
+  //   $playerTwo.css({right: '-=50', bottom: '+=50'}, 500);
   }
 
 
@@ -319,9 +317,12 @@ $(() => {
     const $chairToMove = $('#'+currentPlayer);
     if (currentPlayer === 'playerOne') {
       // $chairToMove moves up first
+      $chairToMove.animate({left: '-=50', bottom: '+=50'}, 500);
       $chairToMove.animate({left: '+=250', top: '+=250'}, 1000);
       $chairToMove.css('background', 'green');
     } else if (currentPlayer === 'playerTwo') {
+      $chairToMove.animate({right: '-=50', bottom: '+=50'}, 500);
+      ///SOUND GET YOUR OWN BACK - wait for clip to finsih
       $chairToMove.animate({left: '-=250', top: '+=250'}, 1000);
       $chairToMove.css('background', 'blue');
     }
@@ -339,7 +340,7 @@ $(() => {
   function gameFinish() {
     if ((scoreOne === 5) || (scoreTwo === 5)) {
       stopTimer();
-      resetGame();
+      // resetGame();
       $daveDiv.html('GET YOUR OWN BACK!');
       toggleBoard();
       $startButton.html('Play again?');

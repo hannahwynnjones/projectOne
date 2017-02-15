@@ -117,7 +117,7 @@ p.result  {
   float: left;
   position: relative;
   left: 400px;
-  margin-top: 450px;
+  top: 450px;
 }
 
 #playerTwo {
