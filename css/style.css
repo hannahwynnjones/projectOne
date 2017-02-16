@@ -1,150 +1,310 @@
 header {
-  width:100%;
+  width: 100%;
   text-align:center;
 }
 
 body {
-  background-color: lavender;
+  background-color: black;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 main {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 10%;
+  left: 10%;
+  /*transform: translate(-50%, -50%);*/
 }
 
-/*3 screens */
+/*3 WELCOME SCREEN */
 
 .welcomeScreen {
-  display: none;
-  background: red;
+  visibility: visible;
+  background: white;
+  position: absolute;
 }
-
-.questionBoard {
-  display: none;
-}
-
-.tvSet {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  /*margin: 0px auto 10px;*/
-  width: 1100px;
-  height: 100vh;
-  /*display: none;*/
-  background-image: url("images/tvSet2.jpeg");
-  background-color: #cccccc;
-}
-
-/*welcome screen*/
 
 .welcomeContainer {
-  width: 800px;
-  heigth: 700px;
+  width: 1100px;
+  height: 900px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .largeLogo {
-  width: 800px;
-  heigth: 700px;
+  background-size: contain;
+  background-size: cover;
+  background-size: 100%;
+  /*height: 155px;*/
+  width: 600px;
 }
 
 .instructions {
-
-
+margin: 0 auto;
+text-align: center;
+width: 500px;
 }
 
 h2 {
-
+text-align: center;
 }
 
 ul {
+  list-style-type: none;
+  color: black;
+}
 
+li {
 
 }
 
-/*END OF WELCOME SCREEN*/
-
-/*MAIN BOARD*/
-
-.topBoard {
+.welcomeButton {
+  margin: 20px;
   text-align: center;
-  background-color: white;
-  border-color: black;
-  /*padding: 30px;*/
-  margin: 0 auto;
-  height: 150px;
-  width: 600px;
-
 }
 
-.logo {
-  width: 50%;
-  height: 80%;
+/* QUESTIOn BOARD SCREEN*/
+
+.questionBoard {
+  visibility: visible;
+  position: absolute;
 }
 
-.middleBoard {
+.box {
+  width: 750px;
+  height: 600px;
+  overflow: auto;
+  margin: 45px auto 55px;
   text-align: center;
-  background-color: white;
-  border-color: black;
-  border-top: white;
-  border-width: medium;
-  /*padding: 30px;*/
-  margin: 0 auto;
-  border-radius: 4px;
-  height: 450px;
-  width: 600px;
+  background: red;
+  border-width: thick;
+}
+
+.left {
+  float: left;
+  width: 375px;
+  padding-top: 40px;
+  background: red;
+}
+
+.logoWelcome {
+  background-size: contain;
+  background-size: cover;
+  background-size: 100%;
+  /*height: 155px;*/
+  height: 200px;;
+}
+
+.right {
+  float: right;
+  width: 350px;
+  background: red;
+}
+
+.timer {
+  font-size: 20px;
+
+}
+
+.middleBoardButton {
+  font-size: 20px;
+  margin: 50px;
+  padding: 10px;
 }
 
 .question {
   font-size: 20px;
-  padding: 20px 0;
+  padding: 30px;
 }
 
-.answers {
-    font-size: 20px;
-    padding: 20px 0;
+.answers button {
+    font-size: 10px;
+    background: white;
+    border: 1px solid;
+    color: red;
+    padding: 15px 20px;
+    /*margin: 10px;*/
 }
-
 
 .daveDiv {
     font-size: 20px;
     padding: 20px 0;
   }
 
-button {
-  font-size: 20px;
-  margin: 5px;
-  padding: 25px 7;
+  .board {
+    margin:
+  }
+
+  h2 {
+
+  }
+
+  p span {
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0 0 20px;
+  }
+
+/*TV SET*/
+
+.tvSet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /*transform: translate(-50%, -50%);*/
+  text-align: center;
+  /*margin: 0px auto 10px;*/
+  width: 1100px;
+  height: 800px;
+  display: none;
+  background-image: url("images/tvSet4.jpeg");
+  background-repeat: no-repeat;
+  background-color: #cccccc;
 }
 
-.screen {
-  font-size: 25px;
-  padding: 20px 0;
+#playerOne {
+  float: left;
+  position: relative;
+  left: 400px;
+  margin-top: 450px;
+  background: url("images/farageSitting2.png");
+  background-size: contain;
+  background-size: cover;
+  background-size: 100%;
+  height: 155px;
+  width: 100px;
+}
+
+#playerTwo {
+  float: right;
+  right: 400px;
+  position: relative;
+  margin-top: 450px;
+  background: url("images/trumpsitting3.png");
+  background-size: contain;
+  background-size: cover;
+  background-size: 100%;
+  height: 155px;
+  width: 100px;
+
+}
+
+.gunge {
+    background: #00f002;
+    width: 500px;
+    height: 130px;
+    position: relative;
+    left: 50%;
+    /*top: 50%;*/
+    transform: translate(-50%, -50%);*/
+    text-align: center;
+    margin-top: 720px;
+    border-color: black;
+}
+
+/*FINISH 1 (player1 yellow)*/
+
+.finish1 {
+  visibility: visible;
+  background: white;
+  position: absolute;
+  width: 1100px;
+  height: 900px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.finish2 {
+  visibility: visible;
+  background: white;
+  position: absolute;
+  width: 1100px;
+  height: 900px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.won h1 {
+
+}
+
+.exitButton button {
+
+}
+
+.gungePic {
+    background-size: contain;
+    background-size: cover;
+    background-size: 100%;
+    /*height: 155px;*/
+    width: 300px;
+}
+
+/*GAME OVER */
+
+.gameOver {
+
+  visibility: visible;
+  background: white;
+  position: absolute;
+  width: 1100px;
+  height: 900px;
+  text-align: center;
+  margin: 0 auto;
+
 }
 
 p {
-  margin: 0 0 20px;
+
 }
 
-p span {
-  font-weight: bold;
+.daveGameOver {
+    background-size: contain;
+    background-size: cover;
+    background-size: 100%;
+    /*height: 155px;*/
+    width: 300px;
 }
 
-p.result  {
+
+/*BULLSHIT BULLSHIT BULSHIT BULLSHIT BULSHIT BULLSHIT BULLSHIT BULSHIT*/
+/*BULLSHIT BULLSHIT BULSHIT BULLSHIT BULSHIT BULLSHIT BULLSHIT BULSHIT*/
+/*BULLSHIT BULLSHIT BULSHIT BULLSHIT BULSHIT BULLSHIT BULLSHIT BULSHIT*/
+
+/*.left {
+  text-align: center;
+  background-color: white;
+  border-color: black;
+  margin: 0 auto;
+  height: 200px;
+  width: 600px;
+}*/
+
+/*.right {
+  text-align: center;
+  background-color: white;
+  border-color: black;
+  border-top: white;
+  border-width: medium;
+  margin: 0 auto;
+  border-radius: 4px;
+  height: 500px;
+  width: 600px;
+}*/
+
+/*.screen {
+  font-size: 25px;
+  padding: 20px 0;
+}*/
+
+/*p.result  {
   background-color: rgb(51, 51, 77);
   color: white;
   padding: 8px 12px;
   height: 34px;
   border-radius: 4px;
-}
-
-/*TV SET*/
-
-
+}*/
 
 .players {
     background: pink;
@@ -156,77 +316,35 @@ p.result  {
     text-align: center;
 }
 
-#playerOne {
+/*#gif1 {
   float: left;
   position: relative;
-  left: 400px;
-  margin-top: 450px;
-  background: url("images/farageSitting.jpeg");
+  left: 100px;
+  margin-top: 480px;
+  background: url("images/cat.gif");
   background-size: contain;
   background-size: cover;
+  background-size: 100%;
+  height: 155px;
+  width: 100px;
 }
 
-#playerTwo {
+#gif2 {
   float: right;
-  right: 400px;
-  position: relative;
-  margin-top: 450px;
-  background: url("images/trumpSitting.jpeg");
+  right: 100px;
+  position: absolute;
+  margin-top: 480px;
+  background: url("images/cheer.gif");
   background-size: contain;
   background-size: cover;
-}
-
-.gunge {
-    background: #00f002;
-    width: 500px;
-    height: 100px;
-    position: relative;
-    left: 50%;
-    /*top: 50%;*/
-    transform: translate(-50%, -50%);*/
-    text-align: center;
-    margin-top: 670px;
-    border-color: black;
-}
-
-/*#playerOneMoveButton {
-padding: 20px;
-margin: 0 auto;
-display: inline;
-text-align: center;
-}
-
-#playerTwoMoveButton {
-padding: 20px;
-margin: 0 auto;
-text-align: center;
-display: inline;
+  background-size: 100%;
+  height: 155px;
+  width: 100px;
 }*/
 
+/*FINISH SCREEN*/
 
-/*WELCOME SCREEN */
 
-.largeLogo {
 
-}
 
-/*.logoContainer {
- width: 150px;
- height: 100px;
- background-image: "css/images/largelogo.jpeg";
- background-size: cover;
- background-repeat: no-repeat;
- background-position: 50% 50%;
- position: absolute;
- margin: 0 auto;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- text-align: center;
- -webkit-animation: slide 0.5s forwards;
- -webkit-animation-delay: 2s;
- animation: slide 0.5s forwards;
- animation-delay: 2s;
- display: none;
-}*/
+/*GAME OVER SCREEN */

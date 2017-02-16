@@ -18,20 +18,20 @@ Wednesday
 AM
 // - sort out stop
 // - reset function: re-set divs and re-set counter.
-- animation on finish - sort out end of game
-- end game function to end the game if the counter gets to zero
-    - let player know who won despite game over.
+//- animation on finish - sort out end of game
+//- end game function to end the game if the counter gets to zero
+// - let player know who won despite game over.
 
 
 PM
 // - dunking animation
-- game over animation
+// - game over animation
 
 - fade in logo at the beginning with instructions.
 
 Home-time
-- sort out CSS
-- draw
+// sort out CSS
+// draw
   //  - tvSet
   //  - logo (to swipe in and also top of page)
   //  - playerDivs (the characters on the page)
@@ -44,13 +44,23 @@ Home-time
       - 'that's all folks'
 
 Thursday
+
+AM
+// - remove bullet points
+// - re-size trump and farage
+
+BIGGY
+// -sort out coding between layers of game
+
+PM
+- ENDING to game
+- music
 - re-factoring
 - tinkering
 - voices/add sounds
 - de-bugging
 - mute button
-- reset function: re-set divs and re-set counter. (rather than refreshing the page)
-- change to yellow and blue team
+// - reset function: re-set divs and re-set counter. (rather than refreshing the page)
 
 
 Extra levels?
@@ -58,3 +68,15 @@ Extra levels?
 - think about the draw feature - closest question?
 - moving dave animation
 - think about animating the swiping in logo - flashing between 2 logos
+
+easy extra, padantic things
+
+- yellow and blue team?
+- more questions
+- improve the set
+
+Friday AM
+-REadME file
+
+BUGS
+-
