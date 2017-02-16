@@ -4,41 +4,45 @@ $(() => {
 
   let scoreOne = 0;
   let scoreTwo = 0;
-  let questionCounter = 0; //Tracks question number fot toggleplayer function
+  let questionCounter = 0; //Tracks question number to decide whose go it is
   let popped;
-  // let playerOne; //need this?
-  // let playerTwo;  //need this?
-  let currentPlayer = 'playerOne'; //starts player one no matter what
+  // let playerOne;
+  // let playerTwo;
+  let currentPlayer = 'playerOne';
   let time = 10;
-  let timerId;
-  let totalTime;
+
+
+  const $questionDiv = $('.question');
+  const $daveDiv = $('.daveDiv');
+
+  const $timer = $('.timer');
+  // const $firstButton = $('.readyButton')
+  const $score1 = $('#score1');
+  const $score2 = $('#score2');
+  const $hidden = $('.hidden');
+  // const $chairToMove = $('#'+currentPlayer);
+  // const $audio = $('.audio.middleBoardButton');
+  const $gunge = $('.gunge');
 
   // 3 divs to move between (welcome then goes to the question board whcih goes to the tv set and back again.)
   //maybe include a forth for the finish.
   const $questionBoard = $('.questionBoard');
   const $welcomeScreen = $('.welcomeScreen');
   const $tvSet = $('.tvSet');
+  let timerId;
+  let totalTime;
 
-  //3 buttons across game:
+//3 buttons:
 
   const $welcomeButton = $('.welcomeButton');
   const $middleBoardButton = $('.middleBoardButton');
   const $reset = $('.reset');
 
-//QuestionBoard consts
+//TVSET
 
-  const $questionDiv = $('.question');
-  const $daveDiv = $('.daveDiv');
-  const $timer = $('.timer');
-  const $score1 = $('#score1');
-  const $score2 = $('#score2');
-  const $hidden = $('.hidden'); //need this?
-  // const $audio = $('.audio.middleBoardButton'); //for audio later
-
-  // TV set consts
-  const $gunge = $('.gunge');
   const $playerOne = $('#playerOne');  ///divs for playerOneone
   const $playerTwo = $('#playerTwo');
+
 
   var listOfQuestions = [
     {
@@ -123,12 +127,15 @@ $(() => {
     }
   ];
 
-//Screen loads - ony welcome page visable.
+//on load screen - div class welcome screen is visable, all other screens are hidden
+//press "ready to go to tstart the game"
 
-//click on button to hide welcome screen
-
-  $questionBoard.css(
-    {visibility: 'hidden'});
+// $(".Reply-open-button-1").click(function () {
+//     $("div.Reply-div-1").show("slow");
+//
+//     $("div.Alert-div-1").hide("slow");
+//     $("div.Close-div-1").hide("slow");
+// });
 
   $welcomeButton.on('click',() => {
 
@@ -136,9 +143,10 @@ $(() => {
     $welcomeScreen.css(
       {visibility: 'hidden'});
     $questionBoard.css(
-      {visibility: 'visible'});
+      {visability: 'visible'});
   });
 
+  // $middleBoardButton.on('click', generateQuestion);
   $middleBoardButton.on('click', startGame);
   // $middleBoardButton.on('click', (e) => {    //play a GYOB intro - welcome to...
   //   $middleBoardButton.textContent = 'PLAY';
