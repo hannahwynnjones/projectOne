@@ -11,20 +11,33 @@ $(() => {
   let currentPlayer = 'playerOne';
   let time = 10;
 
-  const $reset = $('.reset');
+
   const $questionDiv = $('.question');
   const $daveDiv = $('.daveDiv');
+  const correctAnswer = popped.correctAnswer;
+
   const $timer = $('.timer');
-  const $startButton = $('.start');
+  // const $firstButton = $('.readyButton')
   const $score1 = $('#score1');
   const $score2 = $('#score2');
   const $hidden = $('.hidden');
-  const $tvSet = $('.tvSet');
   const $chairToMove = $('#'+currentPlayer);
-  const $audio = $('audio.startButton');
+  const $audio = $('audio.middleBoardButton');
   const $gunge = $('.gunge');
+
+  // 3 divs to move between (welcome then goes to the question board whcih goes to the tv set and back again.)
+  //maybe include a forth for the finish.
+  const $questionBoard = $('questionBoard');
+  const $welcomeScreen = $('welcomeScreen');
+  const $tvSet = $('.tvSet');
   let timerId;
   let totalTime;
+
+//3 buttons:
+
+  const $welcomeButton = $('welcomeButton');
+  const $middleBoardButton = $('.middleBoardButton');
+  const $reset = $('.reset');
 
 //TVSET
 
@@ -115,10 +128,27 @@ $(() => {
     }
   ];
 
-  // $startButton.on('click', generateQuestion);
-  $startButton.on('click', startGame);
-  // $startButton.on('click', (e) => {    //play a GYOB intro - welcome to...
-  //   $startButton.textContent = 'PLAY';
+//on load screen - div class welcome screen is visable, all other screens are hidden
+//press "ready to go to tstart the game"
+
+// $(".Reply-open-button-1").click(function () {
+//     $("div.Reply-div-1").show("slow");
+//
+//     $("div.Alert-div-1").hide("slow");
+//     $("div.Close-div-1").hide("slow");
+// });
+
+  // $welcomeButton.on('click',() => {
+  //
+  //   $welcomeScreen.css({display: 'none'});
+  //   $questionBoard.css({display: 'block'});
+  //   $tvSet.css({display: 'none'});
+  // });
+
+  // $middleBoardButton.on('click', generateQuestion);
+  $middleBoardButton.on('click', startGame);
+  // $middleBoardButton.on('click', (e) => {    //play a GYOB intro - welcome to...
+  //   $middleBoardButton.textContent = 'PLAY';
   //   if($audio.paused) {
   //     $audio.play();
   //     e.target.textContent = 'PAUSE';
@@ -130,6 +160,8 @@ $(() => {
 
 //startGame = used at the beggining to start the game.
   function startGame() {
+    $welcomeScreen.hidden();
+    $questionBoard.fadeIn();
     $score1.text(0);
     $score2.text(0);
     console.log(currentPlayer);
@@ -174,7 +206,7 @@ $(() => {
 
   function toggleBoard() {
     $hidden.toggle();
-    $startButton.toggle();
+    $middleBoardButton.toggle();
   }
 
 // (2) generate Question  (generating a qu from the array by popping it out
@@ -283,7 +315,7 @@ $(() => {
 //(6) reset game at end
 
   $reset.on('click', ()=>{
-        location.reload();
+    location.reload();
 // //   //location.reload();
 //     // $playerOne.text(0);
 //     // $playerTwo.text(0);
@@ -350,8 +382,8 @@ $(() => {
       // resetGame();
       $daveDiv.html('GET YOUR OWN BACK!');
       toggleBoard();
-      $startButton.html('Play again?');
-    // $startButton.on('click', startGame);
+      $middleBoardButton.html('Play again?');
+    // $middleBoardButton.on('click', startGame);
       // $score1.text(0);
       // $score2.text(0);
       // console.log(currentPlayer);
@@ -365,8 +397,8 @@ $(() => {
     if (time === 0)
       $daveDiv.html('GAMEOVER!');
     // toggleBoard();
-    $startButton.html('Play again?');
-    // $startButton.on('click', startGame);
+    $middleBoardButton.html('Play again?');
+    // $middleBoardButton.on('click', startGame);
       // $score1.text(0);
       // $score2.text(0);
       // console.log(currentPlayer);

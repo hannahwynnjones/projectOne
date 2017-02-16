@@ -1,0 +1,1592 @@
+/*  Syntax Quick Reference
+  --------------------------
+  column($ratios: 1, $offset: 0, $cycle: 0, $uncycle: 0, $gutter: $jeet-gutter)
+  span($ratio: 1, $offset: 0)
+  shift($ratios: 0, $col_or_span: column, $gutter: $jeet-gutter)
+  unshift()
+  edit()
+  center($max_width: 1410px, $pad: 0)
+  stack($pad: 0, $align: false)
+  unstack()
+  align($direction: both)
+  cf()
+*/
+/**
+ * Grid settings.
+ * All values are defaults and can therefore be easily overidden.
+ */
+/**
+ * List functions courtesy of the wonderful folks at Team Sass.
+ * Check out their awesome grid: Singularity.
+ */
+/**
+ * Get  percentage from a given ratio.
+ * @param {number} [$ratio=1] - The column ratio of the element.
+ * @returns {number} - The percentage value.
+ */
+/**
+ * Work out the column widths based on the ratio and gutter sizes.
+ * @param {number} [$ratios=1] - The column ratio of the element.
+ * @param {number} [$gutter=$jeet-gutter] - The gutter for the column.
+ * @returns {list} $width $gutter - A list containing the with and gutter for the element.
+ */
+/**
+ * Get the set layout direction for the project.
+ * @returns {string} $direction - The layout direction.
+ */
+/**
+ * Replace a specified list value with a new value (uses built in set-nth() if available)
+ * @param {list} $list - The list of values you want to alter.
+ * @param {number} $index - The index of the list item you want to replace.
+ * @param {*} $value - The value you want to replace $index with.
+ * @returns {list} $list - The list with the value replaced or removed.
+ * @warn if an invalid index is supplied.
+ */
+/**
+ * Reverse a list (progressively enhanced for Sass 3.3)
+ * @param {list} $list - The list of values you want to reverse.
+ * @returns {list} $result - The reversed list.
+ */
+/**
+ * Get the opposite direction to a given value.
+ * @param {string} $dir - The direction you want the opposite of.
+ * @returns {string} - The opposite direction to $dir.
+ * @warn if an incorrect string is provided.
+ */
+/**
+ * Style an element as a column with a gutter.
+ * @param {number} [$ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [$offset=0] - A offset specified as a fraction (see $ratios).
+ * @param {number} [$cycle=0] - Easily create an nth column grid where $cycle equals the number of columns.
+ * @param {number} [$uncycle=0] - Undo a previous cycle value to allow for a new one.
+ * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * An alias for the column mixin.
+ * @param [$args...] - All arguments get passed through to column().
+ */
+/**
+ * Get the width of a column and nothing else.
+ * @param {number} [$ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * Get the gutter size of a column and nothing else.
+ * @param {number} [ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [gutter=jeet.gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * An alias for the column-width function.
+ * @param [$args...] - All arguments get passed through to column().
+ */
+/**
+ * An alias for the column-gutter function.
+ * @param [$args...] - All arguments get passed through to column().
+ */
+/**
+ * Style an element as a column without any gutters for a seamless row.
+ * @param {number} [$ratios=1] - A width relative to its container as a fraction.
+ * @param {number} [$offset=0] - A offset specified as a fraction (see $ratios).
+ * @param {number} [cycle=0] - Easily create an nth column grid where cycle equals the number of columns.
+ * @param {number} [uncycle=0] - Undo a previous cycle value to allow for a new one.
+ */
+/**
+ * Reorder columns without altering the HTML.
+ * @param {number} [$ratios=0] - Specify how far along you want the element to move.
+ * @param {string} [$col-or-span=column] - Specify whether the element has a gutter or not.
+ * @param {number} [$gutter=$jeet-gutter] - Specify the gutter width as a percentage of the containers width.
+ */
+/**
+ * Reset an element that has had shift() applied to it.
+ */
+/**
+ * View the grid and its layers for easy debugging.
+ * @param {string} [$color=black] - The background tint applied.
+ * @param {boolean} [$important=false] - Whether to apply the style as !important.
+ */
+/**
+ *  Alias for edit().
+ */
+/**
+ * Horizontally center an element.
+ * @param {number} [$max-width=1410px] - The max width the element can be.
+ * @param {number} [$pad=0] - Specify the element's left and right padding.
+ */
+/**
+ * Uncenter an element.
+ */
+/**
+ * Stack an element so that nothing is either side of it.
+ * @param {number} [$pad=0] - Specify the element's left and right padding.
+ * @param {boolean/string} [$align=false] - Specify the text align for the element.
+ */
+/**
+ * Unstack an element.
+ */
+/**
+ * Center an element on either or both axes.
+ * @requires A parent container with relative positioning.
+ * @param {string} [$direction=both] - Specify which axes to center the element on.
+ */
+/**
+ * Apply a clearfix to an element.
+ */
+/**
+ * #SETTINGS
+ */
+@font-face {
+  font-family: "Buka";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/BUKA-Italic.eot");
+  src: url("../fonts/BUKA-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/BUKA-Italic.woff2") format("woff2"), url("../fonts/BUKA-Italic.woff") format("woff"), url("../fonts/BUKA-Italic.ttf") format("truetype"), url("../fonts/BUKA-Italic.svg#BUKA-Italic") format("svg");
+}
+
+@font-face {
+  font-family: "Eveleth";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/EvelethThin.eot");
+  src: url("../fonts/EvelethThin.eot?#iefix") format("embedded-opentype"), url("../fonts/EvelethThin.woff2") format("woff2"), url("../fonts/EvelethThin.woff") format("woff"), url("../fonts/EvelethThin.ttf") format("truetype"), url("../fonts/EvelethThin.svg#EvelethThin") format("svg");
+}
+
+@font-face {
+  font-family: "Avenir";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/AvenirNext-Regular.eot");
+  src: url("../fonts/AvenirNext-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/AvenirNext-Regular.woff2") format("woff2"), url("../fonts/AvenirNext-Regular.woff") format("woff"), url("../fonts/AvenirNext-Regular.ttf") format("truetype"), url("../fonts/AvenirNext-Regular.svg#AvenirNext-Regular") format("svg");
+}
+
+/**
+ * #TOOLS
+ */
+/**
+ * #GENERIC
+ */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 9, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 54, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 67, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 77, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 89, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 97, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 109, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 117, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 126, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 135, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 144, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 153, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 161, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 169, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 173, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 184, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 192, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 203, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 211, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 221, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 229, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 252, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 266, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 277, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 290, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 302, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 311, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 322, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 334, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 346, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 357, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 370, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 379, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 390, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 399, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 408, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 419, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 424, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
+/* line 429, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_generic.normalize.scss */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/********************************************************************
+ * Nothing above this line should output any CSS
+ ********************************************************************/
+/**
+ * #BASE
+ */
+/* line 1, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* line 5, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
+/* line 13, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+html {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* line 18, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 23, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 28, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 37, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+audio,
+canvas,
+img,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+/* line 48, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 54, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+/* line 62, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.page.scss */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* line 1, /Volumes/AR/projects/ar/BarageFarage/src/sass/Base/_base.type.scss */
+body {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/**
+ * #OBJECTS
+ */
+/* line 1, /Volumes/AR/projects/ar/BarageFarage/src/sass/Objects/_objects.wrappers.scss */
+body {
+  background: url('../../assets/img/flag-o-farage.jpg') no-repeat center center transparent;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* line 7, /Volumes/AR/projects/ar/BarageFarage/src/sass/Objects/_objects.wrappers.scss */
+.wrap-farage {
+  *zoom: 1;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+  position: relative;
+  width: 100%;
+}
+
+/* line 344, /Volumes/AR/projects/ar/BarageFarage/src/sass/jeet/_grid.scss */
+.wrap-farage:before, .wrap-farage:after {
+  content: '';
+  display: table;
+}
+
+/* line 349, /Volumes/AR/projects/ar/BarageFarage/src/sass/jeet/_grid.scss */
+.wrap-farage:after {
+  clear: both;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 7, /Volumes/AR/projects/ar/BarageFarage/src/sass/Objects/_objects.wrappers.scss */
+  .wrap-farage {
+    max-width: 1440px;
+  }
+}
+
+/* line 1, /Volumes/AR/projects/ar/BarageFarage/src/sass/Objects/_objects.lists.scss */
+.inline-list {
+  font-size: 0;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+/* line 7, /Volumes/AR/projects/ar/BarageFarage/src/sass/Objects/_objects.lists.scss */
+.inline-list__item {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 13, /Volumes/AR/projects/ar/BarageFarage/src/sass/Objects/_objects.lists.scss */
+.unstyled-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 19, /Volumes/AR/projects/ar/BarageFarage/src/sass/Objects/_objects.lists.scss */
+.bulleted-list {
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 15px;
+}
+
+/**
+ * #COMPONENTS
+ */
+/* Slider */
+/* line 3, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-slider {
+  position: relative;
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* line 18, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 25, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-list:focus {
+  outline: none;
+}
+
+/* line 29, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+/* line 34, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* line 43, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+}
+
+/* line 49, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table;
+}
+
+/* line 55, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-track:after {
+  clear: both;
+}
+
+/* line 59, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+/* line 63, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none;
+}
+
+/* line 67, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+[dir="rtl"] .slick-slide {
+  float: right;
+}
+
+/* line 70, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-slide img {
+  display: block;
+}
+
+/* line 73, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+/* line 79, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+/* line 83, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+/* line 87, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+/* line 91, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+/* line 97, /Volumes/AR/projects/ar/BarageFarage/src/sass/Components/_components.slick.scss */
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+/**
+ * Blocks
+ */
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translate(2px, 1px) rotate(0deg);
+            transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    -webkit-transform: translate(-1px, -2px) rotate(-1deg);
+            transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    -webkit-transform: translate(-3px, 0px) rotate(1deg);
+            transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    -webkit-transform: translate(0px, 2px) rotate(0deg);
+            transform: translate(0px, 2px) rotate(0deg);
+  }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg);
+            transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    -webkit-transform: translate(-1px, 2px) rotate(-1deg);
+            transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    -webkit-transform: translate(-3px, 1px) rotate(0deg);
+            transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    -webkit-transform: translate(2px, 1px) rotate(-1deg);
+            transform: translate(2px, 1px) rotate(-1deg);
+  }
+  80% {
+    -webkit-transform: translate(-1px, -1px) rotate(1deg);
+            transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    -webkit-transform: translate(2px, 2px) rotate(0deg);
+            transform: translate(2px, 2px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-1deg);
+            transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@-webkit-keyframes nod {
+  0% {
+    -webkit-transform: rotate3d(1, 0, 0, -30deg);
+            transform: rotate3d(1, 0, 0, -30deg);
+  }
+  24% {
+    -webkit-transform: rotate3d(1, 0, 0, 30deg);
+            transform: rotate3d(1, 0, 0, 30deg);
+  }
+  48% {
+    -webkit-transform: rotate3d(1, 0, 0, -20deg);
+            transform: rotate3d(1, 0, 0, -20deg);
+  }
+  72% {
+    -webkit-transform: rotate3d(1, 0, 0, 20deg);
+            transform: rotate3d(1, 0, 0, 20deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 0, 0, 0);
+            transform: rotate3d(1, 0, 0, 0);
+  }
+}
+
+/* line 24, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.no-touch .shake:hover {
+  -webkit-animation-name: shake;
+          animation-name: shake;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+/* line 35, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.no-touch .toon-farage__figure:hover .shakehead:after {
+  -webkit-animation-name: shake;
+          animation-name: shake;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+/* line 46, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage__figure .shakeface:after {
+  -webkit-animation-name: shake;
+          animation-name: shake;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@media screen and (min-width: 1024px) {
+  /* line 46, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .toon-farage__figure .shakeface:after {
+    -webkit-animation-name: none;
+            animation-name: none;
+  }
+}
+
+/* line 60, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.nod:hover:after {
+  -webkit-transform-origin: 50% 50% -10px;
+      -ms-transform-origin: 50% 50% -10px;
+          transform-origin: 50% 50% -10px;
+  -webkit-animation: nod 2s;
+          animation: nod 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 66, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .toon-farage {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    width: 50%;
+  }
+}
+
+/* line 76, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage__figure {
+  height: 500px;
+  max-width: 500px;
+  margin: 100px auto 40px;
+  position: relative;
+  width: 300px;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 76, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .toon-farage__figure {
+    height: 50%;
+    left: 50%;
+    margin: 0;
+    top: 12vh;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 100%;
+  }
+}
+
+/* line 92, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage__figure__head {
+  height: 250px;
+  left: -webkit-calc(50% + 18px);
+  left: calc(50% + 18px);
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 200px;
+  z-index: 1;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 92, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .toon-farage__figure__head {
+    height: 290px;
+    left: -webkit-calc(50% + 24px);
+    left: calc(50% + 24px);
+    width: 244px;
+  }
+}
+
+/* line 106, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage__figure__head:after {
+  background: url('../../assets/img/farage-head.png') no-repeat center center transparent;
+  background-size: contain;
+  content: "";
+  height: 250px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 200px;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 106, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .toon-farage__figure__head:after {
+    height: 290px;
+    width: 244px;
+  }
+}
+
+/* line 123, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage__figure__body {
+  background: url('../../assets/img/farage-body.svg') no-repeat center center transparent;
+  background-size: contain;
+  height: 500px;
+  left: 50%;
+  position: absolute;
+  top: 70px;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 300px;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 123, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .toon-farage__figure__body {
+    height: 500px;
+    top: 32%;
+    width: 100%;
+  }
+}
+
+/* line 142, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage .light-hearted {
+  color: #fff;
+  display: none;
+  font: normal 18px/22px "Avenir", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 142, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .toon-farage .light-hearted {
+    bottom: 30px;
+    display: block;
+    left: 40px;
+    position: absolute;
+  }
+}
+
+/* line 154, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage .light-hearted a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* line 158, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.toon-farage .light-hearted a:before {
+  background: url('../../assets/img/analog_republic_logo.png') no-repeat 0 0 transparent;
+  background-size: auto 20px;
+  background-position: -20px 0;
+  display: inline-block;
+  content: "";
+  height: 20px;
+  margin: 0 4px 0 8px;
+  overflow: hidden;
+  vertical-align: middle;
+  width: 19px;
+}
+
+/* line 174, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.light-hearted-footnote {
+  color: #fff;
+  display: block;
+  font: normal 18px/22px "Avenir", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 174, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+  .light-hearted-footnote {
+    display: none;
+  }
+}
+
+/* line 183, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.light-hearted-footnote a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* line 187, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.figure.scss */
+.light-hearted-footnote a:before {
+  background: url('../../assets/img/analog_republic_logo.png') no-repeat 0 0 transparent;
+  background-size: auto 20px;
+  background-position: -20px 0;
+  display: inline-block;
+  content: "";
+  height: 20px;
+  margin: 0 4px 0 8px;
+  overflow: hidden;
+  vertical-align: middle;
+  width: 19px;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 1, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage {
+    float: right;
+    padding-left: 9%;
+    width: 50%;
+  }
+}
+
+/* line 9, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__title {
+  color: #fff;
+  font: normal 130px/100px "Buka", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  letter-spacing: 5.2px;
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 9, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage__title {
+    font-size: 180px;
+    letter-spacing: 7.2px;
+    line-height: 140px;
+    margin: 100px 0 0;
+    text-align: left;
+  }
+}
+
+/* line 25, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__text {
+  color: #fff;
+  font: normal 20px/28px "Eveleth", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  margin: 45px auto 45px;
+  max-width: 600px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 25, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage__text {
+    font-size: 30px;
+    line-height: 36px;
+    padding-right: 20px;
+    text-align: right;
+  }
+}
+
+/* line 41, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__mobile-hint {
+  color: #fff;
+  font: normal 16px/18px "Avenir", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 41, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage__mobile-hint {
+    display: none;
+  }
+}
+
+/* line 53, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__tweets {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* line 57, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__tweets__tweet {
+  background: #fff;
+  -webkit-box-shadow: 4px 4px 26px -2px #333333;
+          box-shadow: 4px 4px 26px -2px #333333;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  width: -webkit-calc(100% - 20px);
+  width: calc(100% - 20px);
+}
+
+/* line 67, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__tweets__tweet p {
+  color: #a4a4a4;
+  font: normal 18px/24px "Avenir", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  letter-spacing: -0.45px;
+  margin: 0;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 67, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage__tweets__tweet p {
+    font-size: 24px;
+    letter-spacing: -0.6px;
+    line-height: 32px;
+  }
+}
+
+/* line 80, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__tweets__tweet span {
+  color: #d419c5;
+  font: normal 18px/24px "Avenir", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  letter-spacing: -0.45px;
+}
+
+@media screen and (min-width: 1200px) {
+  /* line 80, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage__tweets__tweet span {
+    font-size: 24px;
+    letter-spacing: -0.6px;
+    line-height: 32px;
+  }
+}
+
+/* line 92, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__tweets__tweet .tweet-overlay {
+  background: rgba(219, 25, 203, 0.8);
+  -webkit-border-radius: 6px;
+          border-radius: 6px;
+  display: block;
+  height: -webkit-calc(100% - 4px);
+  height: calc(100% - 4px);
+  left: 2px;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+  top: 2px;
+  width: -webkit-calc(100% - 4px);
+  width: calc(100% - 4px);
+}
+
+/* line 104, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__tweets__tweet .tweet-overlay span {
+  color: #fff !important;
+  font-size: 13px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 104, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage__tweets__tweet .tweet-overlay span {
+    font-size: 24px;
+  }
+}
+
+/* line 117, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.farage-barrage__tweets__tweet .tweet-overlay span:before {
+  background: url('../../assets/img/tweet-farage.svg') no-repeat 0 0 transparent;
+  background-size: 45px 30px;
+  content: "";
+  display: inline-block;
+  height: 30px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 45px;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 117, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+  .farage-barrage__tweets__tweet .tweet-overlay span:before {
+    background-size: 65px 50px;
+    height: 50px;
+    width: 65px;
+  }
+}
+
+/* line 137, /Volumes/AR/projects/ar/BarageFarage/src/sass/Blocks/_blocks.tweets.scss */
+.no-touch .farage-barrage__tweets__tweet:hover .tweet-overlay {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/**
+ * #TRUMPS
+ */
+@media screen and (min-width: 768px) {
+  /* line 1, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.scss */
+  .hide-on-desktop {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* line 7, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.scss */
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* line 13, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.scss */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* line 17, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.scss */
+.visually-hidden {
+  visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 21, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.scss */
+  .img-full-capped {
+    height: 280px;
+    overflow: hidden;
+  }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Image replacement
+ */
+/* line 9, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
+}
+
+/* line 17, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+/* line 28, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+/* line 37, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+/* line 53, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+/* line 67, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+/* line 83, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+/* line 89, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+/* line 98, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+.clearfix {
+  *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  /* line 108, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  /* line 115, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  /* line 120, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  /* line 124, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /*
+     * Don't show links for images, or javascript/internal links
+     */
+  /* line 132, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  /* line 138, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /* line 144, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+  /* line 148, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  /* line 153, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  img {
+    max-width: 100% !important;
+  }
+  @page {
+    margin: 0.5cm;
+  }
+  /* line 161, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  /* line 168, /Volumes/AR/projects/ar/BarageFarage/src/sass/Trumps/_trumps.helpers.scss */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
