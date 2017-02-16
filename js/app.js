@@ -18,12 +18,16 @@ $(() => {
   const $questionBoard = $('.questionBoard');
   const $welcomeScreen = $('.welcomeScreen');
   const $tvSet = $('.tvSet');
-
+  const $finish1 = $('.finish1');
+  const $finish2 = $('.finish2');
+  const $gameOver = $('.gameOver');
+  const $playAgain = $('.playAgain');
   //3 buttons across game:
 
   const $welcomeButton = $('.welcomeButton');
   const $middleBoardButton = $('.middleBoardButton');
   const $resetButton = $('.resetButton');
+  const $exitButton = $('.exitButton');
 
 //QuestionBoard consts
 
@@ -126,6 +130,12 @@ $(() => {
 //Screen loads - ony welcome page visable, hides questionBoardpage
   $questionBoard.css(
     {visibility: 'hidden'});
+  $finish1.css(
+    {visibility: 'hidden'});
+  $finish2.css(
+    {visibility: 'hidden'});
+  $gameOver.css(
+    {visibility: 'hidden'});
 
 //click on button to hide welcome screen and reveal questionboardpage
   $welcomeButton.on('click',() => {
@@ -148,6 +158,8 @@ $(() => {
   // });
 
   $resetButton.on('click', resetGame);
+  $playAgain.on('click', resetGame);
+  $exitButton.on('click', exitGame);
 
   function resetGame() {
     scoreOne = 0;
@@ -159,6 +171,10 @@ $(() => {
     resetTimer();
     startGame();
     toggleBoard();
+  }
+
+  function exitGame() {
+    location.reload();
   }
 
   function startGame() {
@@ -179,6 +195,7 @@ $(() => {
     }, 1000);
     totalTime = setTimeout(()=> {
       clearInterval(timerId);
+      gameOver();  //need here?
     }, 10000);
   }
 
@@ -250,7 +267,7 @@ $(() => {
         // Dave - Thats correct!  noise
       } else { // if 5th point, player wins
         playerWin();
-        gameOver();  //need here?
+
       }
 
     } else {
@@ -273,11 +290,9 @@ $(() => {
   function playerWin() {
     $daveDiv.text('You\ve Won!');
     dunkPlayer();
-    gameFinish();
+    // gameFinish();
     //play dunk music
   }
-
-
 
   function dunkPlayer(){
     $tvSet.fadeIn();
@@ -288,13 +303,14 @@ $(() => {
       $chairToMove.animate({left: '-=60', bottom: '+=60'}, 500);
       $chairToMove.animate({left: '+=350', top: '+=350'}, 1000);
       $gunge.animate({left: '+=10'}, 1500);
-      $gunge.animate({bottom: '+=40'}, 1000);
+      $gunge.animate({bottom: '+=60'}, 1000);
+
     } else if (currentPlayer === 'playerTwo') {
       $chairToMove.animate({right: '-=60', bottom: '+=60'}, 500);
       ///SOUND GET YOUR OWN BACK - wait for clip to finsih
       $chairToMove.animate({left: '-=350', top: '+=350'}, 1000);
       $gunge.animate({left: '+=10'}, 1500);
-      $gunge.animate({bottom: '+=40'}, 1000);
+      $gunge.animate({bottom: '+=60'}, 1000);
     }
     setTimeout(()=> {
 
@@ -303,11 +319,26 @@ $(() => {
       // $tvSet.fadeOut();  //.delay(5000).fadeTo('slow', 0.6);
       // resetTimer();
       togglePlayer(); //change players
+      gameFinish();
+      $questionBoard.css(
+        {visibility: 'hidden'});
     }, 3000);
-    gameFinish();
+
+
   }
 
 //fucntion for when either player one or player two wins:
+
+  function gameFinish() {
+    if (scoreOne === 5) {
+      $finish1.css(
+      {visibility: 'visible'});
+
+    } else {
+      $finish2.css(
+        {visibility: 'visible'});
+    }
+  }
 
 //loads finish page
 //    - congratulations player "one/Two" you've got yor own back!
@@ -316,30 +347,20 @@ $(() => {
 //functionality:
   // - reset game (questionboard now becomes hidden)
 
-  function gameFinish() {
-    if ((scoreOne === 5) || (scoreTwo === 5)) {
-      stopTimer();
-      resetGame();
-      $daveDiv.html('GET YOUR OWN BACK!');
-      toggleBoard();
-      $middleBoardButton.html('Play again?');
-    // $middleBoardButton.on('click', startGame);
-    }
-  }
-
 //function for when timer gets to zero = GAME OVER
 
-//game over page becomes visable
-  //"you ran out of time"
-  //play again button?
+// game over page becomes visable
+  // "you ran out of time"
+  // play again button?
   function gameOver() {
-    if (time === 0)
-      $daveDiv.html('GAMEOVER!');
-    // toggleBoard();
-    $middleBoardButton.html('Play again?');
-    // $middleBoardButton.on('click', startGame);
-      // $score1.text(0);
-      // $score2.text(0);
+      // if (time === 0) {
+    $questionBoard.css(
+      {visibility: 'hidden'});
+    $gameOver.css(
+          {visibility: 'visible'});
+    // }
   }
 
+  // }
+  // }
 });
